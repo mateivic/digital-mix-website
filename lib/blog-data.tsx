@@ -13,7 +13,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1,
     slug: "kako-povecati-engagement-na-instagram-profilima",
-    title: "Kako povećati engagement na Instagram profilima",
+    title: "Kako povećati engagement na Instagram profilima u tren oka",
     excerpt: "Saznaj 5 provjerenih strategija za povećanje angažmana tvoje publike na Instagramu.",
     content: `
       <p>U svijetu društvenih mreža, engagement je ključan za uspjeh. Evo 5 strategija koje možete primijeniti već danas:</p>

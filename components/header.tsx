@@ -41,7 +41,14 @@ const Header = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      const headerOffset = 100 // Offset for fixed header
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      })
     }
     setMobileMenuOpen(false)
   }

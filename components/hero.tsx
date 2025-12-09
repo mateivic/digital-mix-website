@@ -32,7 +32,14 @@ const Hero = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      const headerOffset = 100 // Offset for fixed header
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      })
     }
   }
 
@@ -102,7 +109,7 @@ const Hero = () => {
             }`}
             style={{
               color: "#393536",
-              animation: isLoaded ? "slideInUp 0.8s ease-out 0.1s forwards" : "none",
+              animation: isLoaded ? "slideInUp 1s ease-out 0.1s forwards" : "none",
               opacity: isLoaded ? 1 : 0,
             }}
           >
@@ -115,7 +122,7 @@ const Hero = () => {
               isLoaded ? "animate-slide-up" : "opacity-0"
             }`}
             style={{
-              animation: isLoaded ? "slideInUp 0.8s ease-out 0.2s forwards" : "none",
+              animation: isLoaded ? "slideInUp 1s ease-out 0.1s forwards" : "none",
               opacity: isLoaded ? 1 : 0,
             }}
           >
@@ -126,7 +133,7 @@ const Hero = () => {
           <h3
             className="text-lg text-primary font-bold max-w-2xl leading-relaxed"
             style={{
-              animation: isLoaded ? "slideInUp 0.8s ease-out 0.3s forwards" : "none",
+              animation: isLoaded ? "slideInUp 1s ease-out 0.1s forwards" : "none",
               opacity: isLoaded ? 1 : 0,
             }}
           >
@@ -137,7 +144,7 @@ const Hero = () => {
           <div
             className="flex flex-col sm:flex-row gap-4 items-center justify-center pt-4"
             style={{
-              animation: isLoaded ? "slideInUp 0.8s ease-out 0.4s forwards" : "none",
+              animation: isLoaded ? "slideInUp 1s ease-out 0.1s forwards" : "none",
               opacity: isLoaded ? 1 : 0,
             }}
           >

@@ -66,8 +66,7 @@ const Map = ({ locations }: { locations: Location[] }) => {
           icon={numberedIcon(loc.number)} // Pozivamo funkciju s varijablom
         >
           <Popup>
-            <strong>{loc.name}</strong> <br />
-            Broj projekata: {loc.number}
+            <strong>{loc.name}</strong>
           </Popup>
         </Marker>
       ))}

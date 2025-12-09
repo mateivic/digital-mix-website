@@ -1,12 +1,14 @@
 "use client"
 
-import { Mail, Send, Instagram, Heart } from "lucide-react"
+import { Mail, Send, Instagram, Heart, Video } from "lucide-react"
 
 const Contact = () => {
   const floatingIcons = [
-    { Icon: Instagram, top: "10%", left: "5%", delay: 0.3, size: 20 },
-    { Icon: Send, top: "15%", right: "8%", delay: 1.5, size: 18 },
-    { Icon: Heart, bottom: "20%", right: "5%", delay: 2.2, size: 16 },
+    { Icon: Instagram, top: "10%", left: "5%", delay: 0.3, size: 28 },
+    { Icon: Send, top: "15%", right: "8%", delay: 1.5, size: 28 },
+    { Icon: Heart, bottom: "20%", right: "5%", delay: 2.2, size: 23 },
+    { Icon: Video, top: "11%", right: "35%", delay: 0.8, size: 32 },
+    
   ]
 
   return (
@@ -30,6 +32,10 @@ const Contact = () => {
           <item.Icon size={item.size} style={{ color: "#dc7d12" }} />
         </div>
       ))}
+      <div
+        className="absolute bottom-20 left-10 w-42 h-42 rounded-full opacity-10  pointer-events-none"
+        style={{ backgroundColor: "#dc7d12", animation: "float 8s ease-in-out infinite 1s" }}
+      />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
@@ -65,6 +71,8 @@ const Contact = () => {
           </a>
           <a
             href="https://www.instagram.com/digital_mix_hrv"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-6 sm:p-8 rounded-2xl bg-white shadow-lg border-2 border-gray-100 hover:shadow-xl hover:border-orange-300 transition-all duration-300 group"
           >
             <div

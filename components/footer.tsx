@@ -1,25 +1,41 @@
 "use client"
 
-import { Instagram, Linkedin, Mail, ArrowUpFromLine } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Instagram, Mail, CircleChevronUp } from "lucide-react"
 
 const Footer = () => {
+  const pathname = usePathname()
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    // If we're on the home page, smooth scroll to the section with offset
+    if (pathname === "/") {
+      e.preventDefault()
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const headerOffset = 100 // Offset for fixed header
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        })
+      }
     }
+    // Otherwise, let the Link navigate to home page with hash (browser handles scroll)
   }
 
   const navItems = [
-    { id: "usluge", label: "Usluge" },
-    { id: "zasto-mi", label: "Zašto Mi" },
-    { id: "blog", label: "Blog" },
-    { id: "kontakt", label: "Kontakt" },
-    { id: "free-audit", label: "Besplatna IG analiza" },
+    { href: "/#usluge", id: "usluge", label: "Usluge" },
+    { href: "/#zasto-mi", id: "zasto-mi", label: "Zašto Mi" },
+    { href: "/#blog", id: "blog", label: "Blog" },
+    { href: "/#kontakt", id: "kontakt", label: "Kontakt" },
+    { href: "/#free-audit", id: "free-audit", label: "Besplatna IG analiza" },
   ]
 
   return (
@@ -42,22 +58,23 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="flex flex-wrap gap-6 justify-center md:justify-start">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className="text-gray-400 hover:text-primary transition-colors text-sm"
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </div>
 
           {/* Back to Top Button */}
           <button
             onClick={scrollToTop}
-            className="flex items-center justify-center w-12 h-12 rounded-full border border-gray-600 hover:border-primary hover:text-primary transition-all group"
+            className="hover:border-primary hover:text-primary transition-all group"
           >
-            <ArrowUpFromLine className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+            <CircleChevronUp className="w-10 h-10 hover:-translate-y-1 transition-transform" />
           </button>
         </div>
 

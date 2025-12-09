@@ -1,11 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Edu_SA_Beginner, Edu_SA_Hand } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const _geistSans = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+// const _geistSans = Geist({ subsets: ["latin"] })
+// const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const _eduSAHand = Edu_SA_Hand({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Digital Mix - Vaš Partner za Digitalni Rast",
@@ -30,7 +31,7 @@ export default function RootLayout({
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossOrigin=""></script>
       </head>
-      <body className={`${_geistSans.className} antialiased`}>
+      <body className={`${_eduSAHand.className} antialiased`}>
         {children}
         <Analytics />
       </body>
