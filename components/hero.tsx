@@ -104,7 +104,7 @@ const Hero = () => {
 
           {/* Main Headline */}
           <h1
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 transition-all duration-700 ${
+            className={`text-4xl sm:text-5xl lg:text-6xl font-[900] leading-tight text-gray-900 transition-all duration-700 ${
               isLoaded ? "animate-slide-up" : "opacity-0"
             }`}
             style={{
@@ -118,7 +118,7 @@ const Hero = () => {
 
           {/* Secondary Headline */}
           <h2
-            className={`text-xl sm:text-2xl text-gray-700 max-w-2xl leading-relaxed transition-all duration-700 ${
+            className={`text-xl sm:text-2xl text-gray-700 font-bold max-w-2xl leading-relaxed transition-all duration-700 ${
               isLoaded ? "animate-slide-up" : "opacity-0"
             }`}
             style={{

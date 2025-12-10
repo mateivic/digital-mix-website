@@ -109,7 +109,7 @@ export default async function BlogsPage() {
         />
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ color: "#393536", animation: "slideInUp 1s ease-out 0.1s forwards" }}>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[900] mb-6" style={{ color: "#393536", animation: "slideInUp 1s ease-out 0.1s forwards" }}>
             Naš <span style={{ color: "#dc7d12" }}>Blog</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto" style={{ animation: "slideInUp 1s ease-out 0.1s forwards" }}>
