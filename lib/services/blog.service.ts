@@ -2,12 +2,17 @@
  * Blog Service
  * 
  * Server-side service for blog post operations.
- * All methods run on the server only.
+ * 
+ * PUBLIC functions (getPublishedPosts, getPublishedPostBySlug):
+ * - Use getSupabasePublicClient (no cookies)
+ * - Safe for static generation
+ * 
+ * ADMIN functions (getAllPosts, createPost, updatePost, deletePost):
+ * - Use getSupabaseServerClient (with cookies for auth)
+ * - Force dynamic rendering
  */
 
-'use server'
-
-import { getSupabaseServerClient } from '@/lib/supabase/server'
+import { getSupabasePublicClient, getSupabaseServerClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
 import type { 
   BlogPost, 
@@ -34,12 +39,14 @@ function generateSlug(title: string): string {
 
 /**
  * Get all published posts for a project (public)
+ * 
+ * Uses public client - safe for static generation
  */
 export async function getPublishedPosts(
   projectSlug: string
 ): Promise<ApiResponse<BlogPost[]>> {
   try {
-    const supabase = await getSupabaseServerClient()
+    const supabase = getSupabasePublicClient()
 
     // First get project ID
     const { data: project, error: projectError } = await supabase
@@ -75,13 +82,15 @@ export async function getPublishedPosts(
 
 /**
  * Get single published post by slug (public)
+ * 
+ * Uses public client - safe for static generation
  */
 export async function getPublishedPostBySlug(
   projectSlug: string,
   postSlug: string
 ): Promise<ApiResponse<BlogPost>> {
   try {
-    const supabase = await getSupabaseServerClient()
+    const supabase = getSupabasePublicClient()
 
     // First get project ID
     const { data: project, error: projectError } = await supabase

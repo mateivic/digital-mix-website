@@ -30,6 +30,7 @@ export type Database = {
           domain?: string | null
           created_at?: string
         }
+        Relationships: []
       }
       project_admins: {
         Row: {
@@ -50,6 +51,7 @@ export type Database = {
           user_id?: string
           created_at?: string
         }
+        Relationships: []
       }
       blog_posts: {
         Row: {
@@ -94,7 +96,20 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
     }
   }
 }
