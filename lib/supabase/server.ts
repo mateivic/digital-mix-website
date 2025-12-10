@@ -5,37 +5,10 @@
  * This properly handles cookies for authentication.
  */
 
-import { createServerClient } from '@supabase/ssr'
-import { createClient } from '@supabase/supabase-js'
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import type { Database } from '@/lib/types/database'
 
-/**
- * Public Supabase client for read-only operations
- * 
- * This client does NOT use cookies, making it safe for:
- * - Static page generation (generateStaticParams)
- * - Public read-only queries (published blog posts)
- * - SEO-related data fetching (sitemap, metadata)
- * 
- * DO NOT use this for authenticated operations!
- * 
- * Note: Returns untyped client - data will be typed as `any`
- * This is acceptable for public read-only queries
- */
-export function getSupabasePublicClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
-}
-
-/**
- * Authenticated Supabase server client
- * 
- * Use this for operations that require authentication.
- * NOTE: This uses cookies(), which makes the page dynamic.
- */
 export async function getSupabaseServerClient() {
   const cookieStore = await cookies()
 
