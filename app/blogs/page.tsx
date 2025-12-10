@@ -5,10 +5,34 @@
  */
 
 import Link from "next/link"
+import type { Metadata } from "next"
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react"
 import { getPublishedPosts } from "@/lib/services/blog.service"
 import Footer from "@/components/footer"
-import { Instagram, Facebook, Camera, Heart, Share2, Video, BarChart3, Target, Users, MessageCircle } from "lucide-react"
+import { Facebook, Camera, Video, Users } from "lucide-react"
+
+// Page-specific SEO metadata
+export const metadata: Metadata = {
+  title: "Blog - Savjeti za Društvene Mreže i Digitalni Marketing",
+  description: 
+    "Praktični savjeti za vođenje društvenih mreža, kreiranje sadržaja i digitalni marketing. Naučite kako povećati doseg i angažman na Instagramu, Facebooku i TikToku.",
+  keywords: [
+    "blog digitalni marketing",
+    "savjeti za društvene mreže",
+    "Instagram savjeti",
+    "kako voditi Instagram",
+    "content marketing",
+    "social media tips",
+  ],
+  openGraph: {
+    title: "Blog - DigitalMix | Savjeti za Društvene Mreže",
+    description: "Praktični savjeti za vođenje društvenih mreža i digitalni marketing.",
+    type: "website",
+  },
+  alternates: {
+    canonical: "/blogs",
+  },
+}
 
 const floatingIcons = [
   { Icon: Facebook, size: 43, bottom: "5%", left: "32%", delay: "2.2s", duration: "6s" },

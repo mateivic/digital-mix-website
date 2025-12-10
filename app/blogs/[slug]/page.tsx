@@ -5,11 +5,14 @@
  */
 
 import Link from "next/link"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react"
 import { getPublishedPostBySlug, getPublishedPosts } from "@/lib/services/blog.service"
 import ShareButton from "@/components/share-button"
 import Footer from "@/components/footer"
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://digitalmix.hr"
 
 // Format date for display
 function formatDate(dateString: string): string {
@@ -22,6 +25,64 @@ function formatDate(dateString: string): string {
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
+}
+
+// Generate dynamic metadata for each blog post
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const projectSlug = process.env.NEXT_PUBLIC_PROJECT_SLUG || 'digital-mix'
+  const result = await getPublishedPostBySlug(projectSlug, slug)
+  
+  if (!result.success || !result.data) {
+    return {
+      title: "Članak nije pronađen",
+    }
+  }
+  
+  const post = result.data
+  
+  return {
+    title: post.title,
+    description: post.excerpt || `Pročitajte članak "${post.title}" na DigitalMix blogu.`,
+    keywords: post.category ? [post.category, "digitalni marketing", "društvene mreže", "blog"] : undefined,
+    authors: [{ name: "DigitalMix" }],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || undefined,
+      type: "article",
+      publishedTime: post.created_at,
+      modifiedTime: post.updated_at,
+      authors: ["DigitalMix"],
+      images: post.picture_url ? [
+        {
+          url: post.picture_url,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt || undefined,
+      images: post.picture_url ? [post.picture_url] : undefined,
+    },
+    alternates: {
+      canonical: `/blogs/${slug}`,
+    },
+  }
+}
+
+// Generate static params for all published posts (for static generation)
+export async function generateStaticParams() {
+  const projectSlug = process.env.NEXT_PUBLIC_PROJECT_SLUG || 'digital-mix'
+  const result = await getPublishedPosts(projectSlug)
+  const posts = result.data || []
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -42,9 +103,48 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .filter(p => p.id !== post.id)
     .slice(0, 2)
 
+  // JSON-LD structured data for blog post
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.picture_url || undefined,
+    datePublished: post.created_at,
+    dateModified: post.updated_at,
+    author: {
+      "@type": "Organization",
+      name: "DigitalMix",
+      url: siteUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "DigitalMix",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo-digitalmix.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blogs/${slug}`,
+    },
+    articleSection: post.category || "Digitalni Marketing",
+    wordCount: post.content ? post.content.replace(/<[^>]*>/g, '').split(/\s+/).length : undefined,
+    timeRequired: `PT${post.read_time}M`,
+    inLanguage: "hr-HR",
+  }
+
   return (
-    <main className="min-h-screen bg-white">
-      {/* Header */}
+    <>
+      {/* Structured Data for Blog Post */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      
+      <main className="min-h-screen bg-white">
+        {/* Header */}
       <header className="fixed top-4 left-0 right-0 z-50 px-4">
         <nav className="mx-auto max-w-4xl flex items-center justify-between px-8 py-4 rounded-full bg-white/95 shadow-lg backdrop-blur-lg border border-gray-200">
           <Link href="/" className="text-2xl font-bold" style={{ color: "#dc7d12" }}>
@@ -221,7 +321,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </section> */}
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+    </>
   )
 }
