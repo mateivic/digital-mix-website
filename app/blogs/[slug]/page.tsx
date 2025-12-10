@@ -5,6 +5,7 @@
  */
 
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
 import {
@@ -25,6 +26,35 @@ function formatDate(dateString: string): string {
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
+}
+
+// Generate dynamic metadata with canonical URL
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const projectSlug = process.env.NEXT_PUBLIC_PROJECT_SLUG || "digital-mix";
+  const result = await getPublishedPostBySlug(projectSlug, slug);
+
+  if (!result.success || !result.data) {
+    return {
+      title: "Članak nije pronađen",
+    };
+  }
+
+  const post = result.data;
+
+  return {
+    title: post.title,
+    description: post.excerpt || `Pročitajte članak "${post.title}" na DigitalMix blogu.`,
+    alternates: {
+      canonical: `/blogs/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || undefined,
+      type: "article",
+      images: post.picture_url ? [{ url: post.picture_url }] : undefined,
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
