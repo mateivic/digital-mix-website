@@ -35,7 +35,7 @@ const Footer = () => {
     { href: "/#zasto-mi", id: "zasto-mi", label: "Zašto Mi" },
     { href: "/#blog", id: "blog", label: "Blog" },
     { href: "/#kontakt", id: "kontakt", label: "Kontakt" },
-    { href: "/#free-audit", id: "free-audit", label: "Besplatna IG analiza" },
+    // { href: "/#free-audit", id: "free-audit", label: "Besplatna IG analiza" },
   ]
 
   return (

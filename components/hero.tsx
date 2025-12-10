@@ -157,7 +157,7 @@ const Hero = () => {
             >
               Kontaktiraj Nas
             </button>
-            <button
+            {/* <button
               onClick={() => scrollToSection("free-audit")}
               className="px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:scale-105 active:scale-95"
               style={{
@@ -166,7 +166,7 @@ const Hero = () => {
               }}
             >
               Besplatna analiza IG profila
-            </button>
+            </button> */}
           </div>
 
           {/* Scroll Indicator */}

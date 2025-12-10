@@ -12,7 +12,7 @@ import Services from "@/components/services"
 import About from "@/components/about"
 import WhyUs from "@/components/why-us"
 import Locations from "@/components/locations"
-import FreeAudit from "@/components/free-audit"
+// import FreeAudit from "@/components/free-audit"
 import Blog from "@/components/blog"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
@@ -50,7 +50,7 @@ export default function Home() {
           <About />
           <WhyUs />
           <Locations />
-          <FreeAudit />
+          {/* <FreeAudit /> */}
           <Suspense fallback={<BlogLoading />}>
             <Blog />
           </Suspense>

@@ -67,7 +67,7 @@ const Header = () => {
 
   return (
     <header className="fixed left-0 right-0 z-50 top-2 px-4">
-      <div ref={headerRef} className="mx-auto max-w-4xl">
+      <div ref={headerRef} className="mx-auto max-w-3xl">
         <nav className="flex items-center justify-between px-6 md:px-8 py-3 md:py-4 rounded-full bg-white/95 shadow-lg backdrop-blur-lg border border-gray-200">
           {/* Logo - Changed from Link to button with scrollToTop */}
           <button
@@ -91,7 +91,7 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-large transition-colors ${
+                className={`text-md font-large transition-colors ${
                   activeSection === item.id ? "text-primary" : "text-gray-700 hover:text-primary"
                 }`}
               >
@@ -100,9 +100,8 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA Buttons & Mobile Menu Toggle */}
           <div className="flex items-center gap-3">
-            <button
+            {/* <button
               onClick={() => scrollToSection("free-audit")}
               className="hidden sm:block px-4 py-2 rounded-full text-white text-sm font-semibold transition-all hover:shadow-lg hover:scale-105"
               style={{
@@ -110,7 +109,7 @@ const Header = () => {
               }}
             >
               Besplatna IG analiza
-            </button>
+            </button> */}
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

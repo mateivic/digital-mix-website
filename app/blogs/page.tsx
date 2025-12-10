@@ -172,8 +172,7 @@ export default async function BlogsPage() {
           )}
         </div>
       </section>
-
-      {/* CTA Section */}
+{/* 
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div
           className="max-w-4xl mx-auto text-center p-12 rounded-3xl"
@@ -192,7 +191,7 @@ export default async function BlogsPage() {
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>

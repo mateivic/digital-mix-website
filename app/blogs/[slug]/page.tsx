@@ -201,8 +201,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
       )}
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div
           className="max-w-4xl mx-auto text-center p-12 rounded-3xl"
           style={{ background: "linear-gradient(135deg, #dc7d12 0%, #ffb873 100%)" }}
@@ -220,7 +219,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </main>
