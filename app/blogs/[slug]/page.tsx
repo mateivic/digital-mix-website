@@ -14,6 +14,7 @@ import {
 } from "@/lib/services/blog.service";
 import ShareButton from "@/components/share-button";
 import Footer from "@/components/footer";
+import PartnershipCTA from "@/components/partnership-CTA";
 
 // Format date for display
 function formatDate(dateString: string): string {
@@ -260,25 +261,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
       )}
 
-      {/* <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div
-          className="max-w-4xl mx-auto text-center p-12 rounded-3xl"
-          style={{ background: "linear-gradient(135deg, #dc7d12 0%, #ffb873 100%)" }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Spreman za digitalni rast?</h2>
-          <p className="text-white/90 text-lg mb-8">
-            Kontaktiraj nas za besplatnu analizu i saznaj kako možemo pomoći tvom poslovanju.
-          </p>
-          <Link
-            href="/#free-audit"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white rounded-full font-bold text-lg hover:shadow-xl transition-all hover:scale-105"
-            style={{ color: "#dc7d12" }}
-          >
-            Besplatna IG Analiza
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </section> */}
+      <PartnershipCTA />
 
       <Footer />
     </main>
