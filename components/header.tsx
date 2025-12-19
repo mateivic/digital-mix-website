@@ -136,13 +136,13 @@ const Header = () => {
                 </button>
               ))}
               <hr className="my-2 border-gray-200" />
-              <button
+              {/* <button
                 onClick={() => scrollToSection("free-audit")}
                 className="px-4 py-3 rounded-xl text-white text-sm font-semibold text-center transition-all hover:opacity-90"
                 style={{ backgroundColor: "#dc7d12" }}
               >
                 Besplatna IG analiza
-              </button>
+              </button> */}
             </div>
           </div>
         )}
