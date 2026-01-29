@@ -113,7 +113,7 @@ const Hero = () => {
               opacity: isLoaded ? 1 : 0,
             }}
           >
-            Vodiš li još uvijek <span style={{ color: "#dc7d12" }}>sam/a</span> svoje društvene mreže?
+            Zašto još uvijek sve oko društvenih mreža radiš <span style={{ color: "#dc7d12" }}>samostalno?</span>
           </h1>
 
           {/* Secondary Headline */}
@@ -126,7 +126,7 @@ const Hero = () => {
               opacity: isLoaded ? 1 : 0,
             }}
           >
-            Umoran si od konstantnog stvaranja sadržaja, planiranja objava i praćenja trendova?
+            Naš tim radi točno ono što tebi treba. Od potpunog kreiranja sadržaja, vođenja profila do pomoći oko oglasa uz fleksibilnu suradnju.
           </h2>
 
           {/* Description */}
@@ -137,7 +137,7 @@ const Hero = () => {
               opacity: isLoaded ? 1 : 0,
             }}
           >
-            Prepusti to nama – a ti se fokusiraj na svoj posao.
+            Opusti se i prepusti dio posla nama – a ti se fokusiraj na svoj posao.
           </h3>
 
           {/* CTA Buttons */}
