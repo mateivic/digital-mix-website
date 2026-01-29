@@ -126,7 +126,7 @@ const Hero = () => {
               opacity: isLoaded ? 1 : 0,
             }}
           >
-            Naš tim radi točno ono što tebi treba. Od potpunog kreiranja sadržaja, vođenja profila do pomoći oko oglasa uz fleksibilnu suradnju.
+            Naš tim radi točno ono što tebi treba. Od potpunog kreiranja sadržaja, vođenja profila do pomoći oko oglasa.
           </h2>
 
           {/* Description */}
