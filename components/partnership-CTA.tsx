@@ -11,7 +11,7 @@ const CTAs = [
     },
     {
         id: 2,
-        title: "Radiš u Canva-i, Photoshopu, Adobe alatima?",
+        title: "Radiš u Canvi, Photoshopu, Adobe alatima?",
         description: "Tvoj je komp  pun nedovršenih ideja, skica, filtera i projekata koji čekaju pravi trenutak? Ako si kimnuo/la glavom barem jednom — pošalji nam poruku. Možda se baš tamo, negdje između piksela i inspiracije, dogodi odlična suradnja.",
         buttonText: "Kontaktiraj Nas",
         link: "/#kontakt",

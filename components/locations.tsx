@@ -43,7 +43,7 @@ const Locations = () => {
           Gdje <span className="font-bold text-primary">djelujemo</span>?
         </h2>
         <p className="text-lg text-gray-600 text-center mb-12">
-          Iako radimo online sa cijelim svjetom, fizički smo prisutni u ovim lokacijama.
+          Iako radimo online sa cijelim svjetom, fizički smo prisutni na ovim lokacijama.
         </p>
 
         {/* Map Container */}
