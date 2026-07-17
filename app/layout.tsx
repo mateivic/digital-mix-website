@@ -1,22 +1,31 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Geist, Geist_Mono, Edu_SA_Beginner, Edu_SA_Hand, TikTok_Sans, Roboto_Flex } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import {
+  Geist,
+  Geist_Mono,
+  Edu_SA_Beginner,
+  Edu_SA_Hand,
+  TikTok_Sans,
+  Roboto_Flex,
+} from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import "./globals.css";
 
 // const _geistSans = Geist({ subsets: ["latin"] })
 // const _geistMono = Geist_Mono({ subsets: ["latin"] })
 // const _eduSAHand = Edu_SA_Hand({ subsets: ["latin"] })
 // const _tikTokSans = TikTok_Sans({ subsets: ["latin"] })
-const _robotoFlex = Roboto_Flex({ subsets: ["latin"] })
+const _robotoFlex = Roboto_Flex({ subsets: ["latin"] });
 
 // Base URL for the site - update this to your production domain
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://digitalmix.hr"
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://digitalmix.hr";
 
 export const metadata: Metadata = {
   // Basic metadata
   title: {
-    default: "DigitalMix - Vođenje Društvenih Mreža i Kreiranje Sadržaja | Hrvatska",
+    default:
+      "DigitalMix - Vođenje Društvenih Mreža i Kreiranje Sadržaja | Hrvatska",
     template: "%s | DigitalMix",
   },
   description:
@@ -36,12 +45,12 @@ export const metadata: Metadata = {
     "digitalna agencija Zadar",
     "social media Dalmacija",
   ],
-  
+
   // Author and creator
   authors: [{ name: "DigitalMix", url: siteUrl }],
   creator: "DigitalMix",
   publisher: "DigitalMix",
-  
+
   // Robots
   robots: {
     index: true,
@@ -54,7 +63,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  
+
   // Canonical URL
   metadataBase: new URL(siteUrl),
   alternates: {
@@ -63,7 +72,7 @@ export const metadata: Metadata = {
       "hr-HR": "/",
     },
   },
-  
+
   // Open Graph (Facebook, LinkedIn, etc.)
   openGraph: {
     type: "website",
@@ -82,7 +91,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
+
   // Twitter Card
   twitter: {
     card: "summary_large_image",
@@ -92,27 +101,25 @@ export const metadata: Metadata = {
     images: [`${siteUrl}/og-image.jpg`],
     creator: "@digitalmix_hrv",
   },
-  
+
   // Verification (add these once you set up the accounts)
   // verification: {
   //   google: "your-google-verification-code",
   // },
-  
+
   // Additional metadata
   category: "business",
   classification: "Digital Marketing Agency",
-  
+
   // Icons
   icons: {
-    icon: [
-      { url: "/logo-digitalmix.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/logo-digitalmix.svg", type: "image/svg+xml" }],
     apple: "/logo-digitalmix.svg",
   },
-  
+
   // Manifest for PWA (optional)
   // manifest: "/manifest.json",
-}
+};
 
 // JSON-LD Structured Data
 const jsonLd = {
@@ -141,9 +148,7 @@ const jsonLd = {
         contactType: "customer service",
         availableLanguage: ["Croatian", "English"],
       },
-      sameAs: [
-        "https://www.instagram.com/digital_mix_hrv",
-      ],
+      sameAs: ["https://www.instagram.com/digital_mix_hrv"],
       areaServed: {
         "@type": "Country",
         name: "Croatia",
@@ -195,7 +200,8 @@ const jsonLd = {
             itemOffered: {
               "@type": "Service",
               name: "Vođenje društvenih mreža",
-              description: "Kompletno upravljanje Instagram, Facebook i TikTok profilima",
+              description:
+                "Kompletno upravljanje Instagram, Facebook i TikTok profilima",
             },
           },
           {
@@ -203,7 +209,8 @@ const jsonLd = {
             itemOffered: {
               "@type": "Service",
               name: "Kreiranje sadržaja",
-              description: "Profesionalna izrada vizualnog sadržaja za društvene mreže",
+              description:
+                "Profesionalna izrada vizualnog sadržaja za društvene mreže",
             },
           },
           {
@@ -229,23 +236,30 @@ const jsonLd = {
       inLanguage: "hr-HR",
     },
   ],
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="hr">
       <head>
-        <title>DigitalMix - Vođenje Društvenih Mreža i Kreiranje Sadržaja</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossOrigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossOrigin=""></script>
+        <title>
+          DigitalMix - Vođenje Društvenih Mreža i Kreiranje Sadržaja
+        </title>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossOrigin=""
+        />
+        <script
+          src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossOrigin=""
+        ></script>
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -256,6 +270,7 @@ export default function RootLayout({
         {children}
         <Analytics />
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
     </html>
-  )
+  );
 }
