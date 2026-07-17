@@ -11,6 +11,7 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+import Script from "next/script";
 
 // const _geistSans = Geist({ subsets: ["latin"] })
 // const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -20,6 +21,7 @@ const _robotoFlex = Roboto_Flex({ subsets: ["latin"] });
 
 // Base URL for the site - update this to your production domain
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://digitalmix.hr";
+const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export const metadata: Metadata = {
   // Basic metadata
@@ -271,6 +273,17 @@ export default function RootLayout({
         <Analytics />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
+      {clarityId && (
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${clarityId}");
+          `}
+        </Script>
+      )}
     </html>
   );
 }
